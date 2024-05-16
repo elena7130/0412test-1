@@ -52,43 +52,43 @@ const SOCIALNETWORKS = [
 				<HeaderLink href='/tags' class='flex items-center gap-1 text-2xl md:text-base'>
 					<TagIcon /> Tags
 				</HeaderLink>
-			</div>
 
-			<div class='flex justify-center items-center md:justify-end gap-3 md:p-0'>
-				{
-					SOCIALNETWORKS.map((network) => (
-						<HeaderLink class='' href={network.url} target='_blank' aria-label={network.name}>
-							<span>{<network.icon />} </span>
-						</HeaderLink>
-					))
-				}
+				<div class='flex justify-center items-center md:justify-end gap-3 md:p-0'>
+					{
+						SOCIALNETWORKS.map((network) => (
+							<HeaderLink class='' href={network.url} target='_blank' aria-label={network.name}>
+								<span>{<network.icon />} </span>
+							</HeaderLink>
+						))
+					}
+				</div>
 			</div>
 		</nav>
-	</div>
 
-	<div class='flex items-center gap-3 md:pl-3' transition:persist='navbar'>
-		<div>
-			<Search />
+		<div class='flex items-center gap-3 md:pl-3' transition:persist='navbar'>
+			<div>
+				<Search />
+			</div>
+			<ToggleTheme />
+			<button id='astro-header-drawer-button' type='button' class='md:ml-6 md:hidden'>
+				<MenuIcon />
+				<span class='sr-only'>Show Menu</span>
+			</button>
 		</div>
-		<ToggleTheme />
-		<button id='astro-header-drawer-button' type='button' class='md:ml-6 md:hidden'>
-			<MenuIcon />
-			<span class='sr-only'>Show Menu</span>
-		</button>
 	</div>
-</header>
-<script>
-	document.addEventListener('click', (event) => {
-		const menu = document.getElementById('astro-header-drawer')
-		const menuButton = document.getElementById('astro-header-drawer-button')
-		const isClickInside =
-			menu?.contains(event.target as HTMLDivElement) ||
-			menuButton?.contains(event.target as HTMLButtonElement)
+	<script>
+		document.addEventListener('click', (event) => {
+			const menu = document.getElementById('astro-header-drawer')
+			const menuButton = document.getElementById('astro-header-drawer-button')
+			const isClickInside =
+				menu?.contains(event.target as HTMLDivElement) ||
+				menuButton?.contains(event.target as HTMLButtonElement)
 
-		if (isClickInside) {
-			menu?.classList.toggle('translate-x-96')
-		} else {
-			menu?.classList.add('translate-x-96')
-		}
-	})
-</script>
+			if (isClickInside) {
+				menu?.classList.toggle('translate-x-96')
+			} else {
+				menu?.classList.add('translate-x-96')
+			}
+		})
+	</script>
+</header>
